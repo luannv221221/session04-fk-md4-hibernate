@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
@@ -27,9 +28,12 @@ public class CategoryController {
         return "add-category";
     }
     @RequestMapping("/save-category")
-    public String save(@ModelAttribute("category") Category category){
-        categoryService.add(category);
-        return "redirect:/category";
+    public String save(@ModelAttribute("category") Category category, RedirectAttributes redirectAttributes){
+        if(categoryService.add(category)){
+            redirectAttributes.addFlashAttribute("success","Thêm mới thành công");
+            return "redirect:/category";
+        }
+        return "add-category";
     }
     //@RequestMapping("/save-category")
     /*canh 1
@@ -63,8 +67,11 @@ public class CategoryController {
         return "edit-category";
     }
     @PostMapping("/edit-category/{id}")
-    public String update(@ModelAttribute("category") Category category){
-        categoryService.update(category);
-        return "redirect:/category";
+    public String update(@ModelAttribute("category") Category category, RedirectAttributes redirectAttributes){
+        if(categoryService.update(category)){
+            redirectAttributes.addFlashAttribute("success","Cập nhật thành công");
+            return "redirect:/category";
+        }
+        return "add-category";
     }
 }

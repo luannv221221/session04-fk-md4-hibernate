@@ -24,6 +24,18 @@
 <div class="container">
     <div class="row">
         <div class="col-lg-8">
+            <c:if test="${!empty success}">
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <strong>${success}</strong>
+                </div>
+                <script>
+                    $(".alert").alert();
+                </script>
+            </c:if>
+
             <h1>Danh sách danh mục</h1>
             <table class="table">
                 <thead>
