@@ -27,7 +27,7 @@ public class CategoryDAOImpl implements CategoryDAO{
     }
 
     @Override
-    public Boolean add(Category category) {
+    public Boolean save(Category category) {
         Session session = sessionFactory.openSession();
         try {
             session.beginTransaction();
@@ -55,4 +55,6 @@ public class CategoryDAOImpl implements CategoryDAO{
         }
         return null;
     }
+
+
 }

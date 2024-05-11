@@ -62,5 +62,9 @@ public class CategoryController {
         model.addAttribute("category",category);
         return "edit-category";
     }
-
+    @PostMapping("/edit-category/{id}")
+    public String update(@ModelAttribute("category") Category category){
+        categoryService.update(category);
+        return "redirect:/category";
+    }
 }
