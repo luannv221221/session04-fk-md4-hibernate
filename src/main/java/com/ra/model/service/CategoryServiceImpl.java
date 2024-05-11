@@ -21,4 +21,9 @@ public class CategoryServiceImpl implements CategoryService {
     public Boolean add(Category category) {
         return categoryDAO.add(category);
     }
+
+    @Override
+    public Category findById(Integer id) {
+        return categoryDAO.findById(id);
+    }
 }
