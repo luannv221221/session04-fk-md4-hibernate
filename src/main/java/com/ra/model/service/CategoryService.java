@@ -9,4 +9,5 @@ public interface CategoryService {
     Boolean add(Category category);
     Category findById(Integer id);
     Boolean update(Category category);
+    Boolean delete(Integer id);
 }

@@ -74,4 +74,13 @@ public class CategoryController {
         }
         return "add-category";
     }
+    @GetMapping("/delete-category/{id}")
+    public String delete(@PathVariable Integer id,RedirectAttributes redirectAttributes){
+        if(categoryService.delete(id)){
+            redirectAttributes.addFlashAttribute("success","xóa thành công");
+            return "redirect:/category";
+        }
+
+        return "redirect:/category";
+    }
 }

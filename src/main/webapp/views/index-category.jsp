@@ -54,6 +54,7 @@
                         <td>${category.status ? 'Hiện' : 'Ẩn'}</td>
                         <td>
                             <a class="btn btn-primary" href="/edit-category/${category.id}">Edit</a>
+                            <a class="btn btn-danger" onclick="return confirm('Muốn xóa không')" href="/delete-category/${category.id}">Delete</a>
                         </td>
                     </tr>
                 </c:forEach>

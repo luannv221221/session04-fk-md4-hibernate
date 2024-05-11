@@ -56,5 +56,22 @@ public class CategoryDAOImpl implements CategoryDAO{
         return null;
     }
 
+    @Override
+    public Boolean delete(Integer id) {
+        Session session = sessionFactory.openSession();
+        try {
+            session.beginTransaction();
+            session.delete(findById(id));
+            session.getTransaction().commit();
+            return true;
+        } catch (Exception exception){
+            exception.printStackTrace();
+            session.getTransaction().rollback();
+        } finally {
+            session.close();
+        }
+        return null;
+    }
+
 
 }
